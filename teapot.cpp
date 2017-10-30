@@ -22,8 +22,8 @@ float eye[] = {5,5,5};
 /* LIGHTING */
 float light_pos[] = {5.0, 5.0, 5.0, 1.0};
 
-float amb0[4] = {1, 1, 1, 1};
-float diff0[4] = {0.5, 0.5, 0.5, 1};
+float amb0[4] = {1, 0, 0, 1};
+float diff0[4] = {0, 0, 1, 1};
 float spec0[4] = {1, 1, 1, 1};
 
 void drawCube()
@@ -110,7 +110,7 @@ void draw3DScene(){
     
     
     /* LIGHTING */
-    glLightfv(GL_LIGHT0, GL_POSITION, light_post);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     glLightfv(GL_LIGHT0, GL_AMBIENT, amb0);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diff0);
     glLightfv(GL_LIGHT0, GL_SPECULAR, spec0);
