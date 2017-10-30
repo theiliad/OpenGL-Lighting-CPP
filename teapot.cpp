@@ -22,9 +22,15 @@ float eye[] = {5,5,5};
 /* LIGHTING */
 float light_pos[] = {5.0, 5.0, 5.0, 1.0};
 
-float amb0[4] = {1, 0, 0, 1};
-float diff0[4] = {0, 0, 1, 1};
+float amb0[4] = {0, 0, 0, 1};
+float diff0[4] = {1, 1, 1, 1};
 float spec0[4] = {1, 1, 1, 1};
+
+/* MATERIALS */
+float m_amb[] = {0.33, 0.22, 0.03, 1.0};
+float m_diff[] = {0.78, 0.57, 0.11, 1.0};
+float m_spec[] = {0.99, 0.91, 0.81, 1.0};
+float shiny = 27.8;
 
 void drawCube()
 {
@@ -124,7 +130,11 @@ void draw3DScene(){
     glRotatef(ang, 0, 1, 0);
     
     //draw the teapot + MATERIALS
-    glColor3f(1,0,0);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,  m_amb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,  m_diff);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,  m_spec);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS,  shiny);
+
     glutSolidTeapot(1);
     
 
