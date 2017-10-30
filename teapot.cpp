@@ -20,7 +20,11 @@ int cnt = 0;
 float eye[] = {5,5,5};
 
 /* LIGHTING */
+float light_pos[] = {5.0, 5.0, 5.0, 1.0};
 
+float amb0[4] = {1, 1, 1, 1};
+float diff0[4] = {0.5, 0.5, 0.5, 1};
+float spec0[4] = {1, 1, 1, 1};
 
 void drawCube()
 {
@@ -106,9 +110,10 @@ void draw3DScene(){
     
     
     /* LIGHTING */
-    
-    
-    
+    glLightfv(GL_LIGHT0, GL_POSITION, light_post);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, amb0);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diff0);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, spec0);
     
     //push the current modelview matrix onto the matrix stack
     //  this allows us to rotate, then pop the stack so as to only
@@ -201,7 +206,9 @@ int main(int argc, char** argv)
 	glutCreateWindow("Spinning Teapot");
     
     /* LIGHTING */
-
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glShadeModel(GL_SMOOTH);
     
 	//enable Z buffer test, otherwise things appear in the order they're drawn
 	glEnable(GL_DEPTH_TEST);
